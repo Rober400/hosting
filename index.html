@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Frutas Interactivas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="contenedor">
+  <h1>🍓 Buscador de Frutas</h1>
+  <p>Escribe el nombre de una fruta y se iluminará.</p>
+
+  <!-- Imagen SVG -->
+  <a href="https://jsbin.com/" target="_blank" class="imagen-link">
+    <svg width="600" height="300" viewBox="0 0 600 300" class="imagen">
+      <rect width="600" height="300" fill="#fceabb"/>
+
+      <circle cx="120" cy="150" r="50" fill="red"/>
+      <text x="95" y="230" font-size="16">Manzana</text>
+
+      <ellipse cx="250" cy="150" rx="40" ry="60" fill="yellow"/>
+      <text x="225" y="230" font-size="16">Banana</text>
+
+      <circle cx="360" cy="150" r="45" fill="orange"/>
+      <text x="335" y="230" font-size="16">Naranja</text>
+
+      <circle cx="460" cy="150" r="35" fill="purple"/>
+      <text x="445" y="230" font-size="16">Uva</text>
+
+      <circle cx="540" cy="150" r="30" fill="pink"/>
+      <text x="515" y="230" font-size="16">Fresa</text>
+    </svg>
+  </a>
+
+  <div class="buscador">
+    <input type="text" id="fruta" placeholder="Ej: manzana">
+    <button onclick="buscarFruta()">Buscar</button>
+  </div>
+
+  <div class="zona-frutas">
+    <div class="fruta" id="manzana">🍎 Manzana</div>
+    <div class="fruta" id="banana">🍌 Banana</div>
+    <div class="fruta" id="naranja">🍊 Naranja</div>
+    <div class="fruta" id="uva">🍇 Uva</div>
+    <div class="fruta" id="fresa">🍓 Fresa</div>
+  </div>
+
+  <p id="resultado"></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
