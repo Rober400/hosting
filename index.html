@@ -1,54 +1,233 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Frutas Interactivas</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist de Pruebas Unitarias - Proyecto CO₂</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="container">
+        <h1>🧪 Checklist de Pruebas Unitarias</h1>
+        <p class="subtitle">Proyecto Web CO₂ - Verificación de Requisitos</p>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar">0%</div>
+        </div>
 
-<div class="contenedor">
-  <h1>🍓 Buscador de Frutas</h1>
-  <p>Escribe el nombre de una fruta y se iluminará.</p>
+        <!-- Sección: Estructura del Repositorio -->
+        <div class="test-section">
+            <h2 class="section-title"><span class="icon">📁</span> Estructura del Repositorio</h2>
+            
+            <div class="test-item" data-points="10">
+                <input type="checkbox" class="checkbox" id="test1">
+                <div class="test-content">
+                    <div class="test-title">Carpetas y archivos principales</div>
+                    <div class="test-description">
+                        ✓ Carpeta <code>images/</code> existe<br>
+                        ✓ Carpeta <code>styles/</code> existe<br>
+                        ✓ Carpeta <code>scripts/</code> existe<br>
+                        ✓ Archivo <code>README.md</code> existe<br>
+                        ✓ Archivo <code>LICENSE</code> existe<br>
+                        ✓ Archivo <code>index.html</code> existe
+                    </div>
+                </div>
+                <span class="points">10 pts</span>
+            </div>
+        </div>
 
-  <!-- Imagen SVG -->
-    <svg width="600" height="300" viewBox="0 0 600 300" class="imagen">
-      <rect width="600" height="300" fill="#fceabb"/>
+        <!-- Sección: Documentación -->
+        <div class="test-section">
+            <h2 class="section-title"><span class="icon">📝</span> Documentación</h2>
+            
+            <div class="test-item" data-points="10">
+                <input type="checkbox" class="checkbox" id="test2">
+                <div class="test-content">
+                    <div class="test-title">README completo</div>
+                    <div class="test-description">
+                        ✓ Explicación de la tarea<br>
+                        ✓ Enlace a la web creada (GitHub Pages o similar)
+                    </div>
+                </div>
+                <span class="points">10 pts</span>
+            </div>
+        </div>
 
-      <circle cx="120" cy="150" r="50" fill="red"/>
-      <text x="95" y="230" font-size="16">Manzana</text>
+        <!-- Sección: Recursos JavaScript -->
+        <div class="test-section">
+            <h2 class="section-title"><span class="icon">⚡</span> Recursos JavaScript</h2>
+            
+            <div class="test-item" data-points="10">
+                <input type="checkbox" class="checkbox" id="test3">
+                <div class="test-content">
+                    <div class="test-title">Intercambio de imágenes</div>
+                    <div class="test-description">
+                        ✓ Al hacer clic en una imagen, se intercambia por otra<br>
+                        ✓ Funciona correctamente en ambos sentidos<br>
+                        ✓ Código JavaScript limpio y comentado
+                    </div>
+                </div>
+                <span class="points">10 pts</span>
+            </div>
 
-      <ellipse cx="250" cy="150" rx="40" ry="60" fill="yellow"/>
-      <text x="225" y="230" font-size="16">Banana</text>
+            <div class="test-item" data-points="10">
+                <input type="checkbox" class="checkbox" id="test4">
+                <div class="test-content">
+                    <div class="test-title">Campo de texto interactivo</div>
+                    <div class="test-description">
+                        ✓ Input que modifica texto en la página<br>
+                        ✓ Actualización en tiempo real o con botón<br>
+                        ✓ Ejemplo: cambiar título, nombre de usuario, etc.
+                    </div>
+                </div>
+                <span class="points">10 pts</span>
+            </div>
 
-      <circle cx="360" cy="150" r="45" fill="orange"/>
-      <text x="335" y="230" font-size="16">Naranja</text>
+            <div class="test-item" data-points="20">
+                <input type="checkbox" class="checkbox" id="test5">
+                <div class="test-content">
+                    <div class="test-title">Objeto en movimiento</div>
+                    <div class="test-description">
+                        ✓ Elemento animado con JavaScript (no solo CSS)<br>
+                        ✓ Movimiento visible y fluido<br>
+                        ✓ Puede ser una partícula, gráfico, o elemento decorativo<br>
+                        ✓ Implementación correcta con setInterval/requestAnimationFrame
+                    </div>
+                </div>
+                <span class="points">20 pts</span>
+            </div>
+        </div>
 
-      <circle cx="460" cy="150" r="35" fill="purple"/>
-      <text x="445" y="230" font-size="16">Uva</text>
+        <!-- Sección: Diseño y Estética -->
+        <div class="test-section">
+            <h2 class="section-title"><span class="icon">🎨</span> Diseño y Estética</h2>
+            
+            <div class="test-item" data-points="10">
+                <input type="checkbox" class="checkbox" id="test6">
+                <div class="test-content">
+                    <div class="test-title">Fuente distintiva</div>
+                    <div class="test-description">
+                        ✓ Fuente personalizada incorporada (Google Fonts, @font-face, etc.)<br>
+                        ✓ Fuente llamativa y legible<br>
+                        ✓ Aplicada correctamente en elementos principales
+                    </div>
+                </div>
+                <span class="points">10 pts</span>
+            </div>
 
-      <circle cx="540" cy="150" r="30" fill="pink"/>
-      <text x="515" y="230" font-size="16">Fresa</text>
-    </svg>
-  </a>
+            <div class="test-item" data-points="20">
+                <input type="checkbox" class="checkbox" id="test7">
+                <div class="test-content">
+                    <div class="test-title">Estética similar a referencia</div>
+                    <div class="test-description">
+                        ✓ Fondo oscuro (negro o gris oscuro)<br>
+                        ✓ Tipografía grande y legible<br>
+                        ✓ Uso de colores verdes/neón para acentos<br>
+                        ✓ Gráfico o visualización de datos<br>
+                        ✓ Indicar en README qué página se usó como referencia
+                    </div>
+                </div>
+                <span class="points">20 pts</span>
+            </div>
+        </div>
 
-  <div class="buscador">
-    <input type="text" id="fruta" placeholder="Ej: manzana">
-    <button onclick="buscarFruta()">Buscar</button>
-  </div>
+        <!-- Sección: Licencias -->
+        <div class="test-section">
+            <h2 class="section-title"><span class="icon">⚖️</span> Licencias</h2>
+            
+            <div class="test-item" data-points="10">
+                <input type="checkbox" class="checkbox" id="test8">
+                <div class="test-content">
+                    <div class="test-title">Licencia Creative Commons</div>
+                    <div class="test-description">
+                        ✓ Archivo LICENSE con licencia CC<br>
+                        ✓ Licencia apropiada para contenido no-software<br>
+                        ✓ Ejemplo: CC BY 4.0, CC BY-SA 4.0, etc.
+                    </div>
+                </div>
+                <span class="points">10 pts</span>
+            </div>
+        </div>
 
-  <div class="zona-frutas">
-    <div class="fruta" id="manzana">🍎 Manzana</div>
-    <div class="fruta" id="banana">🍌 Banana</div>
-    <div class="fruta" id="naranja">🍊 Naranja</div>
-    <div class="fruta" id="uva">🍇 Uva</div>
-    <div class="fruta" id="fresa">🍓 Fresa</div>
-  </div>
+        <!-- Sección: Elementos Adicionales (Descuentos por Ausencia) -->
+        <div class="test-section">
+            <h2 class="section-title"><span class="icon">⚠️</span> Elementos Requeridos (Penalización si faltan)</h2>
+            
+            <div class="test-item penalty-item" data-points="-30">
+                <input type="checkbox" class="checkbox" id="penalty1">
+                <div class="test-content">
+                    <div class="test-title">Enlace al repositorio</div>
+                    <div class="test-description">
+                        ✓ Enlace presente en la web<br>
+                        ✓ Apunta a cuenta personal de GitHub<br>
+                        ✓ Abre en ventana nueva (target="_blank")
+                    </div>
+                </div>
+                <span class="points penalty">-30 pts</span>
+            </div>
 
-  <p id="resultado"></p>
-</div>
+            <div class="test-item penalty-item" data-points="-10">
+                <input type="checkbox" class="checkbox" id="penalty2">
+                <div class="test-content">
+                    <div class="test-title">Imagen adicional</div>
+                    <div class="test-description">
+                        ✓ Al menos una imagen además de las dos del intercambio JS<br>
+                        ✓ Imagen relevante al tema (CO₂, clima, naturaleza, etc.)
+                    </div>
+                </div>
+                <span class="points penalty">-10 pts</span>
+            </div>
 
-<script src="script.js"></script>
+            <div class="test-item penalty-item" data-points="-10">
+                <input type="checkbox" class="checkbox" id="penalty3">
+                <div class="test-content">
+                    <div class="test-title">Enlace externo accesible</div>
+                    <div class="test-description">
+                        ✓ Enlace a sitio externo presente<br>
+                        ✓ Abre en ventana nueva (target="_blank")<br>
+                        ✓ Tiene atributo title para accesibilidad
+                    </div>
+                </div>
+                <span class="points penalty">-10 pts</span>
+            </div>
+        </div>
+
+        <!-- Puntuación Total -->
+        <div class="total-score">
+            <h2>Puntuación Total</h2>
+            <p id="totalScore">0 / 100</p>
+            <button id="resetBtn">🔄 Reiniciar Checklist</button>
+        </div>
+
+        <!-- Notas Adicionales -->
+        <div class="test-section" style="margin-top: 30px;">
+            <h2 class="section-title"><span class="icon">💡</span> Notas para Pruebas</h2>
+            <div style="padding: 15px; color: #a0a0a0; line-height: 1.8;">
+                <strong style="color: #4ecca3;">Casos de prueba sugeridos:</strong><br><br>
+                
+                <strong>🔹 Intercambio de imágenes:</strong><br>
+                • Hacer clic en imagen 1 → debe mostrar imagen 2<br>
+                • Hacer clic en imagen 2 → debe volver a imagen 1<br>
+                • Verificar que las rutas de las imágenes son correctas<br><br>
+                
+                <strong>🔹 Campo de texto:</strong><br>
+                • Escribir en el input y verificar que el texto cambia<br>
+                • Probar con caracteres especiales (ñ, á, €)<br>
+                • Verificar que funciona sin recargar la página<br><br>
+                
+                <strong>🔹 Objeto en movimiento:</strong><br>
+                • Verificar que el movimiento es fluido (60fps idealmente)<br>
+                • Comprobar que no se sale de los límites de la pantalla<br>
+                • Revisar que usa JavaScript, no solo CSS animations<br><br>
+                
+                <strong>🔹 Accesibilidad:</strong><br>
+                • Todos los enlaces tienen title descriptivo<br>
+                • Las imágenes tienen atributo alt<br>
+                • El contraste de colores es suficiente
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
