@@ -1,224 +1,219 @@
-// Variables globales
-let totalPoints = 0;
-const maxPoints = 100;
-
-// Elementos del DOM
-const checkboxes = document.querySelectorAll('.checkbox');
-const progressBar = document.getElementById('progressBar');
-const totalScoreElement = document.getElementById('totalScore');
-const resetBtn = document.getElementById('resetBtn');
-
-// Inicializar la aplicación
-function init() {
-    loadProgress();
-    attachEventListeners();
-    updateScore();
-}
-
-// Agregar event listeners
-function attachEventListeners() {
-    // Event listener para cada checkbox
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', handleCheckboxChange);
+// Esperar a que el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // ============================================
+    // 1. INTERCAMBIO DE IMÁGENES AL HACER CLIC
+    // ============================================
+    
+    const images = document.querySelectorAll('.clickable-image');
+    
+    images.forEach(image => {
+        // Guardar la URL original en un atributo data personalizado
+        image.dataset.originalSrc = image.src;
+        
+        image.addEventListener('click', function() {
+            // Obtener las URLs
+            const currentSrc = this.src;
+            const altSrc = this.dataset.altSrc;
+            const originalSrc = this.dataset.originalSrc;
+            
+            // Efecto visual de transición
+            this.style.opacity = '0';
+            
+            setTimeout(() => {
+                // Intercambiar entre la imagen original y la alternativa
+                if (currentSrc === originalSrc) {
+                    this.src = altSrc;
+                } else {
+                    this.src = originalSrc;
+                }
+                
+                this.style.opacity = '1';
+            }, 200);
+        });
+        
+        // Efecto adicional: mostrar cursor pointer más visible
+        image.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+        
+        image.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
     });
     
-    // Event listener para el botón de reset
-    resetBtn.addEventListener('click', resetChecklist);
-}
-
-// Manejar el cambio de estado de un checkbox
-function handleCheckboxChange(event) {
-    const checkbox = event.target;
-    const testItem = checkbox.closest('.test-item');
     
-    // Agregar o quitar la clase 'checked'
-    if (checkbox.checked) {
-        testItem.classList.add('checked');
-    } else {
-        testItem.classList.remove('checked');
+    // ============================================
+    // 2. CAMPO DE TEXTO QUE CAMBIA EL TÍTULO
+    // ============================================
+    
+    const userInput = document.getElementById('userInput');
+    const changeTextBtn = document.getElementById('changeTextBtn');
+    const mainTitle = document.getElementById('main-title');
+    
+    // Guardar el título original
+    const originalTitle = mainTitle.textContent;
+    
+    // Función para cambiar el título
+    function changeTitle() {
+        const newText = userInput.value.trim();
+        
+        if (newText === '') {
+            // Si el campo está vacío, restaurar el título original
+            mainTitle.textContent = originalTitle;
+            showFeedback('Título restaurado');
+        } else {
+            // Cambiar al nuevo texto
+            mainTitle.textContent = newText;
+            showFeedback('¡Título actualizado!');
+        }
+        
+        // Efecto visual
+        mainTitle.style.transform = 'scale(1.1)';
+        setTimeout(() => {
+            mainTitle.style.transform = 'scale(1)';
+        }, 300);
     }
     
-    // Actualizar puntuación y guardar progreso
-    updateScore();
-    saveProgress();
+    // Evento del botón
+    changeTextBtn.addEventListener('click', changeTitle);
     
-    // Animación suave
-    testItem.style.transform = 'scale(0.98)';
-    setTimeout(() => {
-        testItem.style.transform = '';
-    }, 200);
-}
-
-// Calcular y actualizar la puntuación
-function updateScore() {
-    totalPoints = 0;
-    
-    checkboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            const testItem = checkbox.closest('.test-item');
-            const points = parseInt(testItem.getAttribute('data-points'));
-            totalPoints += points;
+    // También permitir cambiar con Enter
+    userInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            changeTitle();
         }
     });
     
-    // Asegurar que la puntuación no sea negativa
-    if (totalPoints < 0) {
-        totalPoints = 0;
+    // Función de feedback visual
+    function showFeedback(message) {
+        // Crear elemento de feedback
+        const feedback = document.createElement('div');
+        feedback.textContent = message;
+        feedback.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(212, 175, 55, 0.9);
+            color: #1a1a2e;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        `;
+        
+        document.body.appendChild(feedback);
+        
+        // Eliminar después de 2 segundos
+        setTimeout(() => {
+            feedback.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => {
+                document.body.removeChild(feedback);
+            }, 300);
+        }, 2000);
     }
     
-    // Actualizar la UI
-    updateProgressBar();
-    updateTotalScore();
-}
-
-// Actualizar la barra de progreso
-function updateProgressBar() {
-    const percentage = Math.max(0, (totalPoints / maxPoints) * 100);
-    progressBar.style.width = percentage + '%';
-    progressBar.textContent = Math.round(percentage) + '%';
+    // Añadir animaciones de feedback
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
     
-    // Cambiar color según el porcentaje
-    if (percentage >= 80) {
-        progressBar.style.background = 'linear-gradient(90deg, #4ecca3 0%, #3eb489 50%, #2e9c77 100%)';
-    } else if (percentage >= 50) {
-        progressBar.style.background = 'linear-gradient(90deg, #f39c12 0%, #e67e22 100%)';
-    } else {
-        progressBar.style.background = 'linear-gradient(90deg, #e74c3c 0%, #c0392b 100%)';
-    }
-}
-
-// Actualizar puntuación total
-function updateTotalScore() {
-    totalScoreElement.textContent = `${totalPoints} / ${maxPoints}`;
     
-    // Animación de cambio de puntuación
-    totalScoreElement.style.transform = 'scale(1.1)';
-    setTimeout(() => {
-        totalScoreElement.style.transform = 'scale(1)';
-    }, 200);
-}
-
-// Guardar progreso en localStorage
-function saveProgress() {
-    const progress = {};
+    // ============================================
+    // 3. OBJETO EN MOVIMIENTO ADICIONAL (INTERACTIVO)
+    // ============================================
     
-    checkboxes.forEach((checkbox, index) => {
-        progress[`checkbox_${index}`] = checkbox.checked;
+    // El orb flotante ya está animado con CSS, pero añadimos interactividad
+    const floatingOrb = document.querySelector('.floating-orb');
+    
+    // Hacer que el orb siga el cursor sutilmente
+    document.addEventListener('mousemove', function(e) {
+        const x = e.clientX;
+        const y = e.clientY;
+        
+        // Movimiento suave hacia el cursor (con retraso)
+        const orbX = parseFloat(floatingOrb.style.left || 0);
+        const orbY = parseFloat(floatingOrb.style.top || 0);
+        
+        const targetX = x / window.innerWidth * 100;
+        const targetY = y / window.innerHeight * 100;
+        
+        // Aplicar movimiento suave (interpolación)
+        floatingOrb.style.left = `${targetX}%`;
+        floatingOrb.style.top = `${targetY}%`;
+        floatingOrb.style.transition = 'left 2s ease, top 2s ease';
     });
     
-    localStorage.setItem('testChecklistProgress', JSON.stringify(progress));
-}
-
-// Cargar progreso desde localStorage
-function loadProgress() {
-    const savedProgress = localStorage.getItem('testChecklistProgress');
     
-    if (savedProgress) {
-        const progress = JSON.parse(savedProgress);
+    // ============================================
+    // 4. EFECTOS ADICIONALES DE MEJORA
+    // ============================================
+    
+    // Efecto parallax suave en el scroll
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const header = document.querySelector('header');
         
-        checkboxes.forEach((checkbox, index) => {
-            const isChecked = progress[`checkbox_${index}`];
-            if (isChecked) {
-                checkbox.checked = true;
-                checkbox.closest('.test-item').classList.add('checked');
+        if (header) {
+            header.style.transform = `translateY(${scrolled * 0.5}px)`;
+            header.style.opacity = 1 - (scrolled / 500);
+        }
+    });
+    
+    // Animación de entrada para elementos de la galería
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 100);
+                observer.unobserve(entry.target);
             }
         });
-    }
-}
-
-// Reiniciar checklist
-function resetChecklist() {
-    // Confirmar antes de reiniciar
-    const confirmed = confirm('¿Estás seguro de que quieres reiniciar el checklist? Se perderá todo el progreso.');
+    }, observerOptions);
     
-    if (confirmed) {
-        // Desmarcar todos los checkboxes
-        checkboxes.forEach(checkbox => {
-            checkbox.checked = false;
-            checkbox.closest('.test-item').classList.remove('checked');
-        });
-        
-        // Limpiar localStorage
-        localStorage.removeItem('testChecklistProgress');
-        
-        // Actualizar puntuación
-        updateScore();
-        
-        // Feedback visual
-        showResetFeedback();
-    }
-}
-
-// Mostrar feedback de reinicio
-function showResetFeedback() {
-    const container = document.querySelector('.container');
-    const feedback = document.createElement('div');
-    feedback.textContent = '✓ Checklist reiniciado';
-    feedback.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: linear-gradient(135deg, #4ecca3 0%, #3eb489 100%);
-        color: white;
-        padding: 15px 25px;
-        border-radius: 10px;
-        font-weight: bold;
-        box-shadow: 0 4px 15px rgba(78, 204, 163, 0.5);
-        z-index: 1000;
-        animation: slideIn 0.3s ease;
-    `;
+    galleryItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(50px)';
+        item.style.transition = 'all 0.6s ease';
+        observer.observe(item);
+    });
     
-    document.body.appendChild(feedback);
-    
-    // Remover después de 3 segundos
-    setTimeout(() => {
-        feedback.style.animation = 'slideOut 0.3s ease';
-        setTimeout(() => {
-            feedback.remove();
-        }, 300);
-    }, 3000);
-}
-
-// Agregar animaciones CSS dinámicamente
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-    
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(style);
-
-// Inicializar cuando el DOM esté listo
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-} else {
-    init();
-}
-
-// Exportar funciones para testing (opcional)
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        updateScore,
-        saveProgress,
-        loadProgress,
-        resetChecklist
-    };
-}
+    // Log de bienvenida
+    console.log('🎨 Galería Interactiva cargada correctamente');
+    console.log('✨ Haz clic en las imágenes para cambiarlas');
+    console.log('📝 Personaliza el título con el campo de texto');
+    console.log('🌟 Disfruta de las animaciones');
+});
