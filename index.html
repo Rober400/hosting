@@ -3,230 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checklist de Pruebas Unitarias - Proyecto CO₂</title>
+    <title>Galería Interactiva Moderna</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>🧪 Checklist de Pruebas Unitarias</h1>
-        <p class="subtitle">Proyecto Web CO₂ - Verificación de Requisitos</p>
-        
-        <div class="progress-bar">
-            <div class="progress-fill" id="progressBar">0%</div>
-        </div>
+    <!-- Objeto en movimiento: bola flotante animada -->
+    <div class="floating-orb"></div>
+    
+    <header>
+        <h1 id="main-title">Galería Creativa</h1>
+        <p class="subtitle">Explora, interactúa y descubre</p>
+    </header>
 
-        <!-- Sección: Estructura del Repositorio -->
-        <div class="test-section">
-            <h2 class="section-title"><span class="icon">📁</span> Estructura del Repositorio</h2>
+    <main>
+        <!-- Sección de campo de texto -->
+        <section class="text-section">
+            <div class="input-container">
+                <label for="userInput">Personaliza el título:</label>
+                <input type="text" id="userInput" placeholder="Escribe algo aquí...">
+                <button id="changeTextBtn">Cambiar Título</button>
+            </div>
+        </section>
+
+        <!-- Sección de galería con intercambio de imágenes -->
+        <section class="gallery-section">
+            <h2>Galería Interactiva</h2>
+            <p class="gallery-info">Haz clic en las imágenes para cambiarlas</p>
             
-            <div class="test-item" data-points="10">
-                <input type="checkbox" class="checkbox" id="test1">
-                <div class="test-content">
-                    <div class="test-title">Carpetas y archivos principales</div>
-                    <div class="test-description">
-                        ✓ Carpeta <code>images/</code> existe<br>
-                        ✓ Carpeta <code>styles/</code> existe<br>
-                        ✓ Carpeta <code>scripts/</code> existe<br>
-                        ✓ Archivo <code>README.md</code> existe<br>
-                        ✓ Archivo <code>LICENSE</code> existe<br>
-                        ✓ Archivo <code>index.html</code> existe
-                    </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=500&h=500&fit=crop" 
+                         alt="Imagen abstracta 1" 
+                         class="clickable-image"
+                         data-alt-src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=500&h=500&fit=crop">
+                    <p class="image-label">Abstracto 1</p>
                 </div>
-                <span class="points">10 pts</span>
-            </div>
-        </div>
 
-        <!-- Sección: Documentación -->
-        <div class="test-section">
-            <h2 class="section-title"><span class="icon">📝</span> Documentación</h2>
-            
-            <div class="test-item" data-points="10">
-                <input type="checkbox" class="checkbox" id="test2">
-                <div class="test-content">
-                    <div class="test-title">README completo</div>
-                    <div class="test-description">
-                        ✓ Explicación de la tarea<br>
-                        ✓ Enlace a la web creada (GitHub Pages o similar)
-                    </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1550684376-efcbd6e3f031?w=500&h=500&fit=crop" 
+                         alt="Imagen abstracta 2" 
+                         class="clickable-image"
+                         data-alt-src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=500&h=500&fit=crop">
+                    <p class="image-label">Abstracto 2</p>
                 </div>
-                <span class="points">10 pts</span>
-            </div>
-        </div>
 
-        <!-- Sección: Recursos JavaScript -->
-        <div class="test-section">
-            <h2 class="section-title"><span class="icon">⚡</span> Recursos JavaScript</h2>
-            
-            <div class="test-item" data-points="10">
-                <input type="checkbox" class="checkbox" id="test3">
-                <div class="test-content">
-                    <div class="test-title">Intercambio de imágenes</div>
-                    <div class="test-description">
-                        ✓ Al hacer clic en una imagen, se intercambia por otra<br>
-                        ✓ Funciona correctamente en ambos sentidos<br>
-                        ✓ Código JavaScript limpio y comentado
-                    </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1567359781514-3b964e2b04d6?w=500&h=500&fit=crop" 
+                         alt="Imagen abstracta 3" 
+                         class="clickable-image"
+                         data-alt-src="https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?w=500&h=500&fit=crop">
+                    <p class="image-label">Abstracto 3</p>
                 </div>
-                <span class="points">10 pts</span>
-            </div>
 
-            <div class="test-item" data-points="10">
-                <input type="checkbox" class="checkbox" id="test4">
-                <div class="test-content">
-                    <div class="test-title">Campo de texto interactivo</div>
-                    <div class="test-description">
-                        ✓ Input que modifica texto en la página<br>
-                        ✓ Actualización en tiempo real o con botón<br>
-                        ✓ Ejemplo: cambiar título, nombre de usuario, etc.
-                    </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=500&h=500&fit=crop" 
+                         alt="Imagen abstracta 4" 
+                         class="clickable-image"
+                         data-alt-src="https://images.unsplash.com/photo-1506792006437-256b665541e2?w=500&h=500&fit=crop">
+                    <p class="image-label">Abstracto 4</p>
                 </div>
-                <span class="points">10 pts</span>
             </div>
+        </section>
+    </main>
 
-            <div class="test-item" data-points="20">
-                <input type="checkbox" class="checkbox" id="test5">
-                <div class="test-content">
-                    <div class="test-title">Objeto en movimiento</div>
-                    <div class="test-description">
-                        ✓ Elemento animado con JavaScript (no solo CSS)<br>
-                        ✓ Movimiento visible y fluido<br>
-                        ✓ Puede ser una partícula, gráfico, o elemento decorativo<br>
-                        ✓ Implementación correcta con setInterval/requestAnimationFrame
-                    </div>
-                </div>
-                <span class="points">20 pts</span>
-            </div>
-        </div>
-
-        <!-- Sección: Diseño y Estética -->
-        <div class="test-section">
-            <h2 class="section-title"><span class="icon">🎨</span> Diseño y Estética</h2>
-            
-            <div class="test-item" data-points="10">
-                <input type="checkbox" class="checkbox" id="test6">
-                <div class="test-content">
-                    <div class="test-title">Fuente distintiva</div>
-                    <div class="test-description">
-                        ✓ Fuente personalizada incorporada (Google Fonts, @font-face, etc.)<br>
-                        ✓ Fuente llamativa y legible<br>
-                        ✓ Aplicada correctamente en elementos principales
-                    </div>
-                </div>
-                <span class="points">10 pts</span>
-            </div>
-
-            <div class="test-item" data-points="20">
-                <input type="checkbox" class="checkbox" id="test7">
-                <div class="test-content">
-                    <div class="test-title">Estética similar a referencia</div>
-                    <div class="test-description">
-                        ✓ Fondo oscuro (negro o gris oscuro)<br>
-                        ✓ Tipografía grande y legible<br>
-                        ✓ Uso de colores verdes/neón para acentos<br>
-                        ✓ Gráfico o visualización de datos<br>
-                        ✓ Indicar en README qué página se usó como referencia
-                    </div>
-                </div>
-                <span class="points">20 pts</span>
-            </div>
-        </div>
-
-        <!-- Sección: Licencias -->
-        <div class="test-section">
-            <h2 class="section-title"><span class="icon">⚖️</span> Licencias</h2>
-            
-            <div class="test-item" data-points="10">
-                <input type="checkbox" class="checkbox" id="test8">
-                <div class="test-content">
-                    <div class="test-title">Licencia Creative Commons</div>
-                    <div class="test-description">
-                        ✓ Archivo LICENSE con licencia CC<br>
-                        ✓ Licencia apropiada para contenido no-software<br>
-                        ✓ Ejemplo: CC BY 4.0, CC BY-SA 4.0, etc.
-                    </div>
-                </div>
-                <span class="points">10 pts</span>
-            </div>
-        </div>
-
-        <!-- Sección: Elementos Adicionales (Descuentos por Ausencia) -->
-        <div class="test-section">
-            <h2 class="section-title"><span class="icon">⚠️</span> Elementos Requeridos (Penalización si faltan)</h2>
-            
-            <div class="test-item penalty-item" data-points="-30">
-                <input type="checkbox" class="checkbox" id="penalty1">
-                <div class="test-content">
-                    <div class="test-title">Enlace al repositorio</div>
-                    <div class="test-description">
-                        ✓ Enlace presente en la web<br>
-                        ✓ Apunta a cuenta personal de GitHub<br>
-                        ✓ Abre en ventana nueva (target="_blank")
-                    </div>
-                </div>
-                <span class="points penalty">-30 pts</span>
-            </div>
-
-            <div class="test-item penalty-item" data-points="-10">
-                <input type="checkbox" class="checkbox" id="penalty2">
-                <div class="test-content">
-                    <div class="test-title">Imagen adicional</div>
-                    <div class="test-description">
-                        ✓ Al menos una imagen además de las dos del intercambio JS<br>
-                        ✓ Imagen relevante al tema (CO₂, clima, naturaleza, etc.)
-                    </div>
-                </div>
-                <span class="points penalty">-10 pts</span>
-            </div>
-
-            <div class="test-item penalty-item" data-points="-10">
-                <input type="checkbox" class="checkbox" id="penalty3">
-                <div class="test-content">
-                    <div class="test-title">Enlace externo accesible</div>
-                    <div class="test-description">
-                        ✓ Enlace a sitio externo presente<br>
-                        ✓ Abre en ventana nueva (target="_blank")<br>
-                        ✓ Tiene atributo title para accesibilidad
-                    </div>
-                </div>
-                <span class="points penalty">-10 pts</span>
-            </div>
-        </div>
-
-        <!-- Puntuación Total -->
-        <div class="total-score">
-            <h2>Puntuación Total</h2>
-            <p id="totalScore">0 / 100</p>
-            <button id="resetBtn">🔄 Reiniciar Checklist</button>
-        </div>
-
-        <!-- Notas Adicionales -->
-        <div class="test-section" style="margin-top: 30px;">
-            <h2 class="section-title"><span class="icon">💡</span> Notas para Pruebas</h2>
-            <div style="padding: 15px; color: #a0a0a0; line-height: 1.8;">
-                <strong style="color: #4ecca3;">Casos de prueba sugeridos:</strong><br><br>
-                
-                <strong>🔹 Intercambio de imágenes:</strong><br>
-                • Hacer clic en imagen 1 → debe mostrar imagen 2<br>
-                • Hacer clic en imagen 2 → debe volver a imagen 1<br>
-                • Verificar que las rutas de las imágenes son correctas<br><br>
-                
-                <strong>🔹 Campo de texto:</strong><br>
-                • Escribir en el input y verificar que el texto cambia<br>
-                • Probar con caracteres especiales (ñ, á, €)<br>
-                • Verificar que funciona sin recargar la página<br><br>
-                
-                <strong>🔹 Objeto en movimiento:</strong><br>
-                • Verificar que el movimiento es fluido (60fps idealmente)<br>
-                • Comprobar que no se sale de los límites de la pantalla<br>
-                • Revisar que usa JavaScript, no solo CSS animations<br><br>
-                
-                <strong>🔹 Accesibilidad:</strong><br>
-                • Todos los enlaces tienen title descriptivo<br>
-                • Las imágenes tienen atributo alt<br>
-                • El contraste de colores es suficiente
-            </div>
-        </div>
-    </div>
+    <footer>
+        <p>&copy; 2026 Galería Creativa</p>
+        <p class="license">
+            Contenido bajo licencia 
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license">
+                CC BY-SA 4.0
+            </a>
+            <br>
+            <small>Imágenes de <a href="https://unsplash.com" target="_blank">Unsplash</a> (Licencia Unsplash)</small>
+        </p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
